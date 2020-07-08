@@ -75,20 +75,6 @@ public class JwtTokenProvider {
         return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody().getSubject();
     }
 
-    //    public String resolveToken(HttpServletRequest req) {
-//        String bearerToken = req.getHeader("Authorization");
-//        if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
-//            return bearerToken.substring(7, bearerToken.length());
-//        }
-//        return null;
-//    }
-//public String resolveToken(HttpServletRequest req) {
-//    String bearerToken = req.getHeader("Authorization");
-//    if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
-//        return bearerToken.substring(7, bearerToken.length());
-//    }
-//    return null;
-//}
     public String resolveToken(HttpServletRequest req) {
 
         Cookie cookie = WebUtils.getCookie(req, "access_token");

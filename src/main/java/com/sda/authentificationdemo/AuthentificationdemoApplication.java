@@ -15,8 +15,6 @@ import java.util.List;
 @SpringBootApplication
 public class AuthentificationdemoApplication {
 
-    //private static final Logger log = LoggerFactory.getLogger(AuthentificationdemoApplication.class);
-
     public static void main(String[] args) {
         SpringApplication.run(AuthentificationdemoApplication.class, args);
     }
