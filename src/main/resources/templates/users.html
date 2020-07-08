@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en">
+<head>
+    <title>Home Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css}"/>
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/5.13.0/css/font-awesome.min.css}"/>
+</head>
+<body>
+<div th:insert="fragments/navbar :: navbar"></div>
+
+<div class="container" id="main">
+    <h1>All Users List</h1>
+    <table class="table table-borderless">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th sec:authorize="hasRole('ADMIN')" scope="col">Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr  th:each="user : ${users}">
+            <td><span th:text="${user.username}"> Username </span></td>
+            <td><span th:text="${user.email}"> Email </span></td>
+            <td><span th:text="${user.firstName}"> First Name </span></td>
+            <td><span th:text="${user.lastName}"> Last Name </span></td>
+            <td>
+                <a sec:authorize="hasRole('ADMIN')"  th:href="@{/users/admin/{user_id} (user_id=${user.id})}">Details</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+
+</body>
+</html>

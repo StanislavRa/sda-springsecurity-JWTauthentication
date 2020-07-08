@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home Page</title>
+    <meta charset="UTF-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css}" />
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/5.13.0/css/font-awesome.min.css}" />
+</head>
+<body>
+<div th:insert="fragments/navbar :: navbar"></div>
+<div class="container" align="center">
+    <h2>Registration Succeeded!</h2>
+    <span>UserName: </span><span th:text="${user.username}"></span><br/>
+    <span>E-mail: </span><span th:text="${user.email}"></span><br/>
+</div>
+<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+</body>
+</html>

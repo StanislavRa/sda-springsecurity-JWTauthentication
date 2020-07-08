@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en">
+<head>
+    <title>Home Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css}"/>
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/5.13.0/css/font-awesome.min.css}"/>
+</head>
+<body>
+<div th:insert="fragments/navbar :: navbar"></div>
+
+<div class="container">
+    <h1 th:text="${foundUser.username}">Username</h1>
+    <table class="table table-borderless">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th scope="col">Role</th>
+            <th scope="col">Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row" th:text="${foundUser.id}"></th>
+            <td th:text="${foundUser.username}"></td>
+            <td th:text="${foundUser.email}"></td>
+            <td th:text="${foundUser.roles}"></td>
+            <td th:text="${foundUser.status}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <div th:if="${loggedInUser != foundUser.getUsername()}">
+    <a th:href="@{delete_user/{user_id} (user_id=${foundUser.id})}"
+       class="btn btn-danger">Delete</a>
+    </div>
+</div>
+<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+</body>
+</html>

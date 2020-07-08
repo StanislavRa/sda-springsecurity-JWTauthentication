@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+<head>
+    <title>Home Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css}"/>
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/5.13.0/css/font-awesome.min.css}"/>
+
+</head>
+<body>
+<div th:insert="fragments/navbar :: navbar"></div>
+<div class="container">
+    <br>
+    <h1>Hello, World!</h1>
+    <div sec:authorize="isAuthenticated()">
+
+    <h3 >You are authenticated</h3>
+
+    Logged user: <span sec:authentication="name">Bob</span>
+    </div>
+
+</div>
+<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+</body>
+</html>

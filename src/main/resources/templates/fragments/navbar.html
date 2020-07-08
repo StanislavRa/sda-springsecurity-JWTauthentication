@@ -1,0 +1,32 @@
+<div th:fragment="navbar">
+
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#" th:href="@{/}">Stan</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li th:class="${classActiveHome}"><a th:href="@{/}">Home</a></li>
+                    <li sec:authorize="isAnonymous()" th:class="${classActiveLogin}"><a th:href="@{/auth/login}">Login</a></li>
+                    <li sec:authorize="isAnonymous()" th:class="${classActiveRegister}"><a th:href="@{/auth/register}">Register</a></li>
+                    <li sec:authorize="isAnonymous()" th:class="${classActiveChangePass}"><a th:href="@{/auth/changePassword}">Change Password</a></li>
+                    <li sec:authorize="isAuthenticated()" th:class="${classActiveUsers}"><a th:href="@{/users}">Users</a></li>
+                    <li sec:authorize="isAuthenticated()">
+
+                        <div class="right-button">
+                            <a class="btn btn-danger btn-sm" th:href="@{/logout}">Log out</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
